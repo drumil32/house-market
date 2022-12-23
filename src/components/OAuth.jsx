@@ -1,10 +1,9 @@
-import { useLocation, useNavigate } from 'react-router-dom'
-import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
-import { db } from '../firebase.config'
-import { toast } from 'react-toastify'
-import googleIcon from '../assets/svg/googleIcon.svg'
-
+import { useLocation, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase.config';
+import { toast } from 'react-toastify';
+import googleIcon from '../assets/svg/googleIcon.svg';
 
 function OAuth() {
     const navigate = useNavigate();
@@ -27,11 +26,11 @@ function OAuth() {
                     name: user.displayName,
                     email: user.email,
                     timestamp: serverTimestamp(),
-                })
+                });
             }
-            navigate('/')
+            navigate('/');
         } catch (error) {
-            toast.error('Could not authorize with Google')
+            toast.error('Could not authorize with Google');
         }
     }
 

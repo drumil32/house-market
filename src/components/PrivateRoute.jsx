@@ -1,6 +1,6 @@
 import { Outlet,useNavigate } from "react-router-dom";
 import { useAuthStatus } from '../hooks/useAuthStatus';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Spinner from '../components/Spinner';
 
 function PrivateRoute() {
@@ -12,7 +12,7 @@ function PrivateRoute() {
             if( false===isLoggedIn )
             navigate('/');
         }
-    } , [isLoggedIn,chekingStatus] );
+    } , [isLoggedIn, chekingStatus] );
     
     if( chekingStatus ) return ( <Spinner/> );
     

@@ -26,19 +26,16 @@ function Offers() {
             try {
                 const listed_houses_Ref = await collection(db, 'listed_houses');
                 console.log(listed_houses_Ref);
-                // const q = query(listed_houses_Ref, where('type', '==', categoryName), orderBy('timestamp', 'desc'), limit(10));
-                // console.log('this')
-                // const querySnap = await getDocs(q);
 
                 const q = query(
                     listed_houses_Ref,
                     where('offer', '==', true),
                     orderBy('timestamp', 'desc'),
                     limit(10)
-                )
+                );
 
                 // Execute query
-                const querySnap = await getDocs(q)
+                const querySnap = await getDocs(q);
 
                 console.log(querySnap);
                 let listed_houses = [];
@@ -73,7 +70,7 @@ function Offers() {
                         {
                             listed_houses.map(
                                 (listedHouse) => (
-                                    <ListedHouse listedHouse={listedHouse.data} id={listedHouse.id} key={listedHouse.id}/>
+                                    <ListedHouse listedHouse={listedHouse.data} id={listedHouse.id} key={listedHouse.id} />
                                 ))
                         }
                     </> :

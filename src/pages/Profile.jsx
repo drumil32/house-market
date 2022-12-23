@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import { getAuth, updateProfile } from "firebase/auth";
 import {
     updateDoc,
@@ -8,17 +8,17 @@ import {
     collection,
     getDocs
 } from "firebase/firestore";
-import {db} from "../firebase.config";
+import { db } from "../firebase.config";
 
 function Profile() {
     const navigate = useNavigate();
+
     const auth = getAuth();
     const [changeDetails, setChangeDetails] = useState(false);
     const [formData, setFormData] = useState({
         name: auth.currentUser.displayName,
         email: auth.currentUser.email
     });
-
 
     const onLogout = () => {
         auth.signOut();
@@ -47,7 +47,7 @@ function Profile() {
                 // Update in firestore
                 const userRef = doc(db, 'users', auth.currentUser.uid)
                 await updateDoc(userRef, {
-                    name : formData.name,
+                    name: formData.name,
                 })
             }
         } catch (error) {
