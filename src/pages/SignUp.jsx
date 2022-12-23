@@ -25,9 +25,10 @@ function SignUp() {
     const navigate = useNavigate();
 
     const onChange = (e) => {
+        const {id,value} = e.target;
         setFormData((prevState) => ({
             ...prevState,
-            [e.target.id]: e.target.value,
+            [id]: value,
         }));
     }
 
